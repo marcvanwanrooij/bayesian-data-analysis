@@ -1,0 +1,9 @@
+model {
+	for(i in 1:Ndata) {
+		y[i] ~ dnorm(mu[i],1/sigma)
+		mu[i] <- beta0 + beta1 * x[i]
+	}
+	beta0 ~ dnorm( 0 , 1.0E-12 )
+	beta1 ~ dnorm( 0 , 1.0E-12 )
+	sigma ~ dgamma(0.001,0.001 )
+}

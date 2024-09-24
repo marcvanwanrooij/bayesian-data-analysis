@@ -1,0 +1,13 @@
+model {
+    # Data 
+    for (i in 1:Ntotal){
+            y[i] ~ dnorm(mu[i],1/sigma^2)
+            
+            mu[i] = beta0 + beta1 *  x[i] 
+        }
+    
+    # Priors
+    sigma ~ dunif(1E-4,1E4)
+    beta0 ~ dnorm(0,1/(100)^2)
+    beta1 ~ dnorm(1,1/(100)^2)
+}
